@@ -28,13 +28,10 @@ namespace RESTapi
             string apikey = "7576c256";
             StringBuilder builder = new StringBuilder();
             builder.Append(endpoint).Append("?apikey =").Append(apikey).Append("&t=").Append(textBox1.Text.ToString());
-           // string pretrazivanje = endpoint + "/?apikey=" + apikey + "&t" + textBox1.Text.ToString();
+            // builder.Append(endpoint).Append("?apikey =").Append(apikey).Append("&t=").Append(textBox1.Text.ToString().Replace(" ", "&"));
             MessageBox.Show(builder.ToString());
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }
