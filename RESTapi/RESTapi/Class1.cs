@@ -16,10 +16,9 @@ namespace RESTapi
 {
     public class REST
     {
-        public List<REST> lRest;     
-        public List<REST> GetMovies()
+        public List<Movie> GetMovies()
         {
-            List<REST> lRestMovies = new List<REST>();
+            List<Movie> lRestMovies = new List<Movie>();
             string sUrl = System.Configuration.ConfigurationManager.AppSettings["RestApiUrl"];
             string sJson = CallRestMethod(sUrl); // iz URL-a spremamo podatke (Url)
             JArray json = JArray.Parse(sJson); // parsiramo podatke
@@ -39,7 +38,7 @@ namespace RESTapi
                     float ImdbRating = (float)item.GetValue("imdbRating");
                     string BoxOffice = (string)item.GetValue("BoxOffice");
                     //DODAVANJE OBJEKTA U LISTU
-                    lRestMovies.Add(new REST
+                    lRestMovies.Add(new Movie
                     {
                         sTitle = Title,
                         sYear = Year,

@@ -30,8 +30,16 @@ namespace RESTapi
             builder.Append(endpoint).Append("?apikey =").Append(apikey).Append("&t=").Append(textBox1.Text.ToString());
             // builder.Append(endpoint).Append("?apikey =").Append(apikey).Append("&t=").Append(textBox1.Text.ToString().Replace(" ", "&"));
             MessageBox.Show(builder.ToString());
-        }
 
+        }
+        /* 
+         funkciju search movies unutar klase 
+         pozvati funkciju getMovies koja ima za parametar url
+         rezultat funkcije prikazati ispod textboxa i gumbica
+         uz prikazane rezultate spremiti film u bazu (dodati gumbic spremi)
+         kreirati servis Crud koji ima metodu save movie
+         savemovie sprema film iz pretrage u bazu
+         */
      
     }
 }

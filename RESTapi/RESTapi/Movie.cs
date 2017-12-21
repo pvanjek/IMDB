@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RESTapi
 {
-    class Movie
+    public class Movie
     {
         public string sTitle { get; set; }
         public string sYear { get; set; }
