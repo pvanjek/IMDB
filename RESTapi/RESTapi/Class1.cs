@@ -14,13 +14,15 @@ using System.Windows.Forms;
 
 namespace RESTapi
 {
+     
     public class REST
     {
-        public List<Movie> GetMovies()
+        public List<Movie> lRestMovies1;
+        public static List<Movie> GetMovies(string sUrl)
         {
             List<Movie> lRestMovies = new List<Movie>();
-            string sUrl = System.Configuration.ConfigurationManager.AppSettings["RestApiUrl"];
-            string sJson = CallRestMethod(sUrl); // iz URL-a spremamo podatke (Url)
+            string sUrl1 = System.Configuration.ConfigurationManager.AppSettings["RestApiUrl"];
+            string sJson = CallRestMethod(sUrl1); // iz URL-a spremamo podatke (Url)
             JArray json = JArray.Parse(sJson); // parsiramo podatke
             foreach (JObject item in json)                             //koristimo za button
             {
@@ -56,8 +58,21 @@ namespace RESTapi
             }
             return lRestMovies;
         }
+
+        public static string SearchMovies(string url1)
+        {
+             
+            List<Movie> lRestMovies1 = GetMovies(url1);
+            
+
+            return url1;
+        }
+       
+
+
         public static string CallRestMethod(string url)
         {
+            
             url = "http://www.omdbapi.com/?i=tt3896198&apikey=7576c256";
             HttpWebRequest webrequest = (HttpWebRequest)WebRequest.Create(url);
             webrequest.Method = "GET";

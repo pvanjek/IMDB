@@ -28,9 +28,9 @@ namespace RESTapi
             string apikey = "7576c256";
             StringBuilder builder = new StringBuilder();
             builder.Append(endpoint).Append("?apikey =").Append(apikey).Append("&t=").Append(textBox1.Text.ToString());
-            // builder.Append(endpoint).Append("?apikey =").Append(apikey).Append("&t=").Append(textBox1.Text.ToString().Replace(" ", "&"));
+            //builder.Append(endpoint).Append("?apikey =").Append(apikey).Append("&t=").Append(textBox1.Text.ToString().Replace(" ", "&"));
             MessageBox.Show(builder.ToString());
-
+            dataGridView1.DataSource = RESTapi.REST.GetMovies(builder.ToString());
         }
         /* 
          funkciju search movies unutar klase 
@@ -40,6 +40,5 @@ namespace RESTapi
          kreirati servis Crud koji ima metodu save movie
          savemovie sprema film iz pretrage u bazu
          */
-     
     }
 }
