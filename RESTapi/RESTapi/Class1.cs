@@ -42,27 +42,28 @@ namespace RESTapi
             string sAwards1 = oJson["Awards"].ToString();
             string sImdbRating1 = oJson["imdbRating"].ToString();
             string sBoxOffice1 = oJson["BoxOffice"].ToString();
+            string sSlika1 = oJson["Poster"].ToString();
             //            JArray json = JArray.Parse(sJson); // parsiramo podatke
             //          foreach (JObject item in json)  
             //koristimo za button
- //           MessageBox.Show(oMovie.ToString());
+            //           MessageBox.Show(oMovie.ToString());
             //for (int i = 0; i < oMovie.Count; i++)
-           // {
-                
-                    // ČITANJE VRIJEDNOSTI IZ JSON-a
-             //       string Title = (string)oMovie[i]["Title"];
-                    //string Year = (string)item.GetValue("Year");
-                    //string Released = (string)item.GetValue("Released");
-                    //int Runtime = (int)item.GetValue("Runtime");
-                    //string Genre = (string)item.GetValue("Genre"); 
-                    //string Director = (string)item.GetValue("Director");
-                    //string Actors = (string)item.GetValue("Actors");
-                    //string Plot = (string)item.GetValue("Plot");
-                    //string Awards = (string)item.GetValue("Awards");
-                    //float ImdbRating = (float)item.GetValue("imdbRating");
-                    //string BoxOffice = (string)item.GetValue("BoxOffice");
-                    //DODAVANJE OBJEKTA U LISTU
-                    lRestMovies.Add(new Movie
+            // {
+
+            // ČITANJE VRIJEDNOSTI IZ JSON-a
+            //       string Title = (string)oMovie[i]["Title"];
+            //string Year = (string)item.GetValue("Year");
+            //string Released = (string)item.GetValue("Released");
+            //int Runtime = (int)item.GetValue("Runtime");
+            //string Genre = (string)item.GetValue("Genre"); 
+            //string Director = (string)item.GetValue("Director");
+            //string Actors = (string)item.GetValue("Actors");
+            //string Plot = (string)item.GetValue("Plot");
+            //string Awards = (string)item.GetValue("Awards");
+            //float ImdbRating = (float)item.GetValue("imdbRating");
+            //string BoxOffice = (string)item.GetValue("BoxOffice");
+            //DODAVANJE OBJEKTA U LISTU
+            lRestMovies.Add(new Movie
                    {
                         sTitle = sTitle1,
                        sYear = sYear1,
@@ -75,6 +76,7 @@ namespace RESTapi
                         sAwards = sAwards1,
                         sImdbRating = sImdbRating1,
                         sBoxOffice = sBoxOffice1,
+                        sSlika = sSlika1,
                     });
 
             //}

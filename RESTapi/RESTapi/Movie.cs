@@ -19,5 +19,7 @@ namespace RESTapi
         public string sAwards { get; set; }
         public string sImdbRating { get; set; }
         public string sBoxOffice { get; set; }
+        public string sSlika { get; set; }
+
     }
 }
