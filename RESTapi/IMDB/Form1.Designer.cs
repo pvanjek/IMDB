@@ -32,7 +32,22 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.releasedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.runtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actorsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.awardsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imdbRatingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boxOfficeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imdbmovieBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dotNetDataSet = new IMDB.DotNetDataSet();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -61,8 +76,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.imdb_movieTableAdapter = new IMDB.DotNetDataSetTableAdapters.imdb_movieTableAdapter();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imdbmovieBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dotNetDataSet)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -88,6 +107,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dataGridView2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -95,6 +115,125 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Moji filmovi";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titleDataGridViewTextBoxColumn,
+            this.yearDataGridViewTextBoxColumn,
+            this.releasedDataGridViewTextBoxColumn,
+            this.runtimeDataGridViewTextBoxColumn,
+            this.genreDataGridViewTextBoxColumn,
+            this.directorDataGridViewTextBoxColumn,
+            this.actorsDataGridViewTextBoxColumn,
+            this.plotDataGridViewTextBoxColumn,
+            this.awardsDataGridViewTextBoxColumn,
+            this.imdbRatingDataGridViewTextBoxColumn,
+            this.boxOfficeDataGridViewTextBoxColumn});
+            this.dataGridView2.DataSource = this.imdbmovieBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(19, 17);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(997, 393);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.Width = 52;
+            // 
+            // yearDataGridViewTextBoxColumn
+            // 
+            this.yearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
+            this.yearDataGridViewTextBoxColumn.HeaderText = "Year";
+            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
+            this.yearDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // releasedDataGridViewTextBoxColumn
+            // 
+            this.releasedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.releasedDataGridViewTextBoxColumn.DataPropertyName = "Released";
+            this.releasedDataGridViewTextBoxColumn.HeaderText = "Released";
+            this.releasedDataGridViewTextBoxColumn.Name = "releasedDataGridViewTextBoxColumn";
+            this.releasedDataGridViewTextBoxColumn.Width = 77;
+            // 
+            // runtimeDataGridViewTextBoxColumn
+            // 
+            this.runtimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.runtimeDataGridViewTextBoxColumn.DataPropertyName = "Runtime";
+            this.runtimeDataGridViewTextBoxColumn.HeaderText = "Runtime";
+            this.runtimeDataGridViewTextBoxColumn.Name = "runtimeDataGridViewTextBoxColumn";
+            this.runtimeDataGridViewTextBoxColumn.Width = 71;
+            // 
+            // genreDataGridViewTextBoxColumn
+            // 
+            this.genreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
+            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
+            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
+            this.genreDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // directorDataGridViewTextBoxColumn
+            // 
+            this.directorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.directorDataGridViewTextBoxColumn.DataPropertyName = "Director";
+            this.directorDataGridViewTextBoxColumn.HeaderText = "Director";
+            this.directorDataGridViewTextBoxColumn.Name = "directorDataGridViewTextBoxColumn";
+            this.directorDataGridViewTextBoxColumn.Width = 69;
+            // 
+            // actorsDataGridViewTextBoxColumn
+            // 
+            this.actorsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.actorsDataGridViewTextBoxColumn.DataPropertyName = "Actors";
+            this.actorsDataGridViewTextBoxColumn.HeaderText = "Actors";
+            this.actorsDataGridViewTextBoxColumn.Name = "actorsDataGridViewTextBoxColumn";
+            this.actorsDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // plotDataGridViewTextBoxColumn
+            // 
+            this.plotDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.plotDataGridViewTextBoxColumn.DataPropertyName = "Plot";
+            this.plotDataGridViewTextBoxColumn.HeaderText = "Plot";
+            this.plotDataGridViewTextBoxColumn.Name = "plotDataGridViewTextBoxColumn";
+            this.plotDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // awardsDataGridViewTextBoxColumn
+            // 
+            this.awardsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.awardsDataGridViewTextBoxColumn.DataPropertyName = "Awards";
+            this.awardsDataGridViewTextBoxColumn.HeaderText = "Awards";
+            this.awardsDataGridViewTextBoxColumn.Name = "awardsDataGridViewTextBoxColumn";
+            this.awardsDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // imdbRatingDataGridViewTextBoxColumn
+            // 
+            this.imdbRatingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.imdbRatingDataGridViewTextBoxColumn.DataPropertyName = "ImdbRating";
+            this.imdbRatingDataGridViewTextBoxColumn.HeaderText = "ImdbRating";
+            this.imdbRatingDataGridViewTextBoxColumn.Name = "imdbRatingDataGridViewTextBoxColumn";
+            this.imdbRatingDataGridViewTextBoxColumn.Width = 86;
+            // 
+            // boxOfficeDataGridViewTextBoxColumn
+            // 
+            this.boxOfficeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.boxOfficeDataGridViewTextBoxColumn.DataPropertyName = "BoxOffice";
+            this.boxOfficeDataGridViewTextBoxColumn.HeaderText = "BoxOffice";
+            this.boxOfficeDataGridViewTextBoxColumn.Name = "boxOfficeDataGridViewTextBoxColumn";
+            // 
+            // imdbmovieBindingSource
+            // 
+            this.imdbmovieBindingSource.DataMember = "imdb_movie";
+            this.imdbmovieBindingSource.DataSource = this.dotNetDataSet;
+            // 
+            // dotNetDataSet
+            // 
+            this.dotNetDataSet.DataSetName = "DotNetDataSet";
+            this.dotNetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabPage2
             // 
@@ -134,6 +273,15 @@
             this.tabPage2.Text = "Pretraga";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(419, 319);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(422, 70);
+            this.textBox2.TabIndex = 30;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(31, 68);
@@ -150,6 +298,7 @@
             this.label23.Size = new System.Drawing.Size(44, 13);
             this.label23.TabIndex = 28;
             this.label23.Text = "Zarada:";
+            this.label23.Visible = false;
             // 
             // label22
             // 
@@ -159,6 +308,7 @@
             this.label22.Size = new System.Drawing.Size(64, 13);
             this.label22.TabIndex = 27;
             this.label22.Text = "Imdb rejting:";
+            this.label22.Visible = false;
             // 
             // label21
             // 
@@ -168,6 +318,7 @@
             this.label21.Size = new System.Drawing.Size(51, 13);
             this.label21.TabIndex = 26;
             this.label21.Text = "Nagrade:";
+            this.label21.Visible = false;
             // 
             // label20
             // 
@@ -177,6 +328,7 @@
             this.label20.Size = new System.Drawing.Size(45, 13);
             this.label20.TabIndex = 25;
             this.label20.Text = "Sadržaj:";
+            this.label20.Visible = false;
             // 
             // label19
             // 
@@ -186,6 +338,7 @@
             this.label19.Size = new System.Drawing.Size(42, 13);
             this.label19.TabIndex = 24;
             this.label19.Text = "Glumci:";
+            this.label19.Visible = false;
             // 
             // label18
             // 
@@ -195,6 +348,7 @@
             this.label18.Size = new System.Drawing.Size(47, 13);
             this.label18.TabIndex = 23;
             this.label18.Text = "Director:";
+            this.label18.Visible = false;
             // 
             // label17
             // 
@@ -204,6 +358,7 @@
             this.label17.Size = new System.Drawing.Size(32, 13);
             this.label17.TabIndex = 22;
             this.label17.Text = "Žanr:";
+            this.label17.Visible = false;
             // 
             // label16
             // 
@@ -213,6 +368,7 @@
             this.label16.Size = new System.Drawing.Size(48, 13);
             this.label16.TabIndex = 21;
             this.label16.Text = "Trajanje:";
+            this.label16.Visible = false;
             // 
             // label15
             // 
@@ -222,6 +378,7 @@
             this.label15.Size = new System.Drawing.Size(48, 13);
             this.label15.TabIndex = 20;
             this.label15.Text = "Izbačen:";
+            this.label15.Visible = false;
             // 
             // label14
             // 
@@ -231,6 +388,7 @@
             this.label14.Size = new System.Drawing.Size(44, 13);
             this.label14.TabIndex = 19;
             this.label14.Text = "Godina:";
+            this.label14.Visible = false;
             // 
             // label13
             // 
@@ -240,6 +398,7 @@
             this.label13.Size = new System.Drawing.Size(64, 13);
             this.label13.TabIndex = 18;
             this.label13.Text = "Naziv filma: ";
+            this.label13.Visible = false;
             // 
             // label11
             // 
@@ -331,7 +490,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(922, 372);
+            this.button2.Location = new System.Drawing.Point(878, 282);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 50);
             this.button2.TabIndex = 5;
@@ -342,9 +501,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(992, 399);
+            this.dataGridView1.Location = new System.Drawing.Point(966, 317);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(16, 10);
+            this.dataGridView1.Size = new System.Drawing.Size(25, 15);
             this.dataGridView1.TabIndex = 3;
             // 
             // button1
@@ -370,14 +529,9 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // textBox2
+            // imdb_movieTableAdapter
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(419, 319);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(422, 70);
-            this.textBox2.TabIndex = 30;
+            this.imdb_movieTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -391,6 +545,10 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imdbmovieBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dotNetDataSet)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -435,5 +593,20 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private IMDB.DotNetDataSet dotNetDataSet;
+        private System.Windows.Forms.BindingSource imdbmovieBindingSource;
+        private IMDB.DotNetDataSetTableAdapters.imdb_movieTableAdapter imdb_movieTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn releasedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn runtimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn directorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actorsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn plotDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn awardsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imdbRatingDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn boxOfficeDataGridViewTextBoxColumn;
     }
 }

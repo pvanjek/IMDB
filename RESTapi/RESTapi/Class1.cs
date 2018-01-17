@@ -29,41 +29,23 @@ namespace RESTapi
              List<Movie> lRestMovies = new List<Movie>();
             //string sUrl1 = System.Configuration.ConfigurationManager.AppSettings["RestApiUrl"];
             string sJson = CallRestMethod(sUrl); // iz URL-a spremamo podatke (Url)
-            MessageBox.Show(sJson);
-            JObject oJson = JObject.Parse(sJson);
-            string sTitle1 = oJson["Title"].ToString();
-            string sYear1 = oJson["Year"].ToString();
-            string sReleased1 = oJson["Released"].ToString();
-            string sRuntime1 = oJson["Runtime"].ToString();
-            string sGenre1 = oJson["Genre"].ToString();
-            string sDirector1 = oJson["Director"].ToString();
-            string sActors1 = oJson["Actors"].ToString();
-            string sPlot1 = oJson["Plot"].ToString();
-            string sAwards1 = oJson["Awards"].ToString();
+           // MessageBox.Show(sJson);
+            if (sJson.Substring(2,8) != "Response")
+            {
+               JObject oJson = JObject.Parse(sJson);
+            string sTitle1 = oJson["Title"].ToString().Replace("'", " ");
+            string sYear1 = oJson["Year"].ToString().Replace("'", " ");
+            string sReleased1 = oJson["Released"].ToString().Replace("'", " ");
+            string sRuntime1 = oJson["Runtime"].ToString().Replace("'", " ");
+            string sGenre1 = oJson["Genre"].ToString().Replace("'", " ");
+            string sDirector1 = oJson["Director"].ToString().Replace("'", " ");
+            string sActors1 = oJson["Actors"].ToString().Replace("'", " ");
+            string sPlot1 = oJson["Plot"].ToString().Replace("'", " ");
+            string sAwards1 = oJson["Awards"].ToString().Replace("'", " ");
             string sImdbRating1 = oJson["imdbRating"].ToString();
             string sBoxOffice1 = oJson["BoxOffice"].ToString();
             string sSlika1 = oJson["Poster"].ToString();
-            //            JArray json = JArray.Parse(sJson); // parsiramo podatke
-            //          foreach (JObject item in json)  
-            //koristimo za button
-            //           MessageBox.Show(oMovie.ToString());
-            //for (int i = 0; i < oMovie.Count; i++)
-            // {
-
-            // ČITANJE VRIJEDNOSTI IZ JSON-a
-            //       string Title = (string)oMovie[i]["Title"];
-            //string Year = (string)item.GetValue("Year");
-            //string Released = (string)item.GetValue("Released");
-            //int Runtime = (int)item.GetValue("Runtime");
-            //string Genre = (string)item.GetValue("Genre"); 
-            //string Director = (string)item.GetValue("Director");
-            //string Actors = (string)item.GetValue("Actors");
-            //string Plot = (string)item.GetValue("Plot");
-            //string Awards = (string)item.GetValue("Awards");
-            //float ImdbRating = (float)item.GetValue("imdbRating");
-            //string BoxOffice = (string)item.GetValue("BoxOffice");
-            //DODAVANJE OBJEKTA U LISTU
-            lRestMovies.Add(new Movie
+                lRestMovies.Add(new Movie
                    {
                         sTitle = sTitle1,
                        sYear = sYear1,
@@ -78,10 +60,32 @@ namespace RESTapi
                         sBoxOffice = sBoxOffice1,
                         sSlika = sSlika1,
                     });
+            }
+            else
+            {
+                MessageBox.Show("Krivi naziv filma ");
+                lRestMovies.Add(new Movie
+                {
+                    sTitle = "0",
+                    sYear = "0",
+                    sReleased = "0",
+                    sRuntime = "0",
+                    sGenre = "0",
+                    sDirector = "0",
+                    sActors = "0",
+                    sPlot = "0",
+                    sAwards = "0",
+                    sImdbRating = "0",
+                    sBoxOffice = "0",
+                    sSlika = "0",
+                });
+            }
+
+           
 
             //}
             List<Movie> lRestMovies1 = lRestMovies;
-           
+            
             return lRestMovies;
             
         }
