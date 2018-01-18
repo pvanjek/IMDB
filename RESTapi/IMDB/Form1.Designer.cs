@@ -490,25 +490,27 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(878, 282);
+            this.button2.Location = new System.Drawing.Point(922, 372);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 50);
             this.button2.TabIndex = 5;
             this.button2.Text = "SPREMI";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(966, 317);
+            this.dataGridView1.Location = new System.Drawing.Point(962, 394);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(25, 15);
+            this.dataGridView1.Size = new System.Drawing.Size(10, 10);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.Visible = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(936, 22);
+            this.button1.Location = new System.Drawing.Point(939, 22);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 22);
             this.button1.TabIndex = 1;

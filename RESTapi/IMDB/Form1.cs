@@ -51,7 +51,8 @@ namespace RESTapi
             label21.Show();
             label22.Show();
             label23.Show();
-                label1.Text = dataGridView1[0, 0].Value.ToString();
+            button2.Show();
+            label1.Text = dataGridView1[0, 0].Value.ToString();
             label2.Text = dataGridView1[1, 0].Value.ToString();
             label3.Text = dataGridView1[2, 0].Value.ToString();
             label4.Text = dataGridView1[3, 0].Value.ToString();
