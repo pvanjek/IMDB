@@ -42,22 +42,10 @@
             this.dotNetDataSet = new IMDB.DotNetDataSet();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Poster = new System.Windows.Forms.DataGridViewImageColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.releasedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.runtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.directorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actorsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.awardsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imdbRatingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.boxOfficeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PosterUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BoxOffice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imdbmovieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -89,6 +77,22 @@
             this.dotNetDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.imdb_movieTableAdapter = new IMDB.DotNetDataSetTableAdapters.imdb_movieTableAdapter();
             this.imdb_movie_godinaTableAdapter = new IMDB.DotNetDataSetTableAdapters.imdb_movie_godinaTableAdapter();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.Poster = new System.Windows.Forms.DataGridViewImageColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.releasedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.runtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actorsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.awardsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imdbRatingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boxOfficeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PosterUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BoxOffice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imdbmoviegodinaBindingSource)).BeginInit();
@@ -173,7 +177,8 @@
             "Plot",
             "Awards",
             "ImdbRating",
-            "BoxOffice"});
+            "BoxOffice",
+            "Ocijena"});
             this.comboBox2.Location = new System.Drawing.Point(748, 13);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
@@ -185,9 +190,9 @@
             // 
             this.button3.Location = new System.Drawing.Point(328, 18);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(118, 23);
             this.button3.TabIndex = 6;
-            this.button3.Text = "Prikaži sve";
+            this.button3.Text = "Prikaži sve / Osvježi";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -244,7 +249,8 @@
             this.imdbRatingDataGridViewTextBoxColumn,
             this.boxOfficeDataGridViewTextBoxColumn,
             this.PosterUrl,
-            this.BoxOffice1});
+            this.BoxOffice1,
+            this.Ocijena});
             this.dataGridView2.DataSource = this.imdbmovieBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(21, 48);
             this.dataGridView2.Name = "dataGridView2";
@@ -254,117 +260,8 @@
             this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView2.Size = new System.Drawing.Size(1168, 527);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView2_CellFormatting);
-            // 
-            // Poster
-            // 
-            this.Poster.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Poster.FillWeight = 50F;
-            this.Poster.HeaderText = "Poster";
-            this.Poster.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Poster.Name = "Poster";
-            this.Poster.Width = 43;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.Width = 52;
-            // 
-            // yearDataGridViewTextBoxColumn
-            // 
-            this.yearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
-            this.yearDataGridViewTextBoxColumn.HeaderText = "Year";
-            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
-            this.yearDataGridViewTextBoxColumn.Width = 54;
-            // 
-            // releasedDataGridViewTextBoxColumn
-            // 
-            this.releasedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.releasedDataGridViewTextBoxColumn.DataPropertyName = "Released";
-            this.releasedDataGridViewTextBoxColumn.HeaderText = "Released";
-            this.releasedDataGridViewTextBoxColumn.Name = "releasedDataGridViewTextBoxColumn";
-            this.releasedDataGridViewTextBoxColumn.Width = 77;
-            // 
-            // runtimeDataGridViewTextBoxColumn
-            // 
-            this.runtimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.runtimeDataGridViewTextBoxColumn.DataPropertyName = "Runtime";
-            this.runtimeDataGridViewTextBoxColumn.HeaderText = "Runtime";
-            this.runtimeDataGridViewTextBoxColumn.Name = "runtimeDataGridViewTextBoxColumn";
-            this.runtimeDataGridViewTextBoxColumn.Width = 71;
-            // 
-            // genreDataGridViewTextBoxColumn
-            // 
-            this.genreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
-            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
-            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
-            this.genreDataGridViewTextBoxColumn.Width = 61;
-            // 
-            // directorDataGridViewTextBoxColumn
-            // 
-            this.directorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.directorDataGridViewTextBoxColumn.DataPropertyName = "Director";
-            this.directorDataGridViewTextBoxColumn.HeaderText = "Director";
-            this.directorDataGridViewTextBoxColumn.Name = "directorDataGridViewTextBoxColumn";
-            this.directorDataGridViewTextBoxColumn.Width = 69;
-            // 
-            // actorsDataGridViewTextBoxColumn
-            // 
-            this.actorsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.actorsDataGridViewTextBoxColumn.DataPropertyName = "Actors";
-            this.actorsDataGridViewTextBoxColumn.HeaderText = "Actors";
-            this.actorsDataGridViewTextBoxColumn.Name = "actorsDataGridViewTextBoxColumn";
-            // 
-            // plotDataGridViewTextBoxColumn
-            // 
-            this.plotDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.plotDataGridViewTextBoxColumn.DataPropertyName = "Plot";
-            this.plotDataGridViewTextBoxColumn.HeaderText = "Plot";
-            this.plotDataGridViewTextBoxColumn.Name = "plotDataGridViewTextBoxColumn";
-            // 
-            // awardsDataGridViewTextBoxColumn
-            // 
-            this.awardsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.awardsDataGridViewTextBoxColumn.DataPropertyName = "Awards";
-            this.awardsDataGridViewTextBoxColumn.HeaderText = "Awards";
-            this.awardsDataGridViewTextBoxColumn.Name = "awardsDataGridViewTextBoxColumn";
-            // 
-            // imdbRatingDataGridViewTextBoxColumn
-            // 
-            this.imdbRatingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.imdbRatingDataGridViewTextBoxColumn.DataPropertyName = "ImdbRating";
-            this.imdbRatingDataGridViewTextBoxColumn.HeaderText = "ImdbRating";
-            this.imdbRatingDataGridViewTextBoxColumn.Name = "imdbRatingDataGridViewTextBoxColumn";
-            this.imdbRatingDataGridViewTextBoxColumn.Width = 86;
-            // 
-            // boxOfficeDataGridViewTextBoxColumn
-            // 
-            this.boxOfficeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.boxOfficeDataGridViewTextBoxColumn.DataPropertyName = "BoxOffice";
-            this.boxOfficeDataGridViewTextBoxColumn.HeaderText = "BoxOffice";
-            this.boxOfficeDataGridViewTextBoxColumn.Name = "boxOfficeDataGridViewTextBoxColumn";
-            this.boxOfficeDataGridViewTextBoxColumn.Width = 78;
-            // 
-            // PosterUrl
-            // 
-            this.PosterUrl.DataPropertyName = "Poster";
-            this.PosterUrl.HeaderText = "Poster Url";
-            this.PosterUrl.Name = "PosterUrl";
-            this.PosterUrl.Visible = false;
-            this.PosterUrl.Width = 21;
-            // 
-            // BoxOffice1
-            // 
-            this.BoxOffice1.DataPropertyName = "BoxOffice1";
-            this.BoxOffice1.HeaderText = "BoxOffice1";
-            this.BoxOffice1.Name = "BoxOffice1";
-            this.BoxOffice1.ReadOnly = true;
-            this.BoxOffice1.Visible = false;
             // 
             // imdbmovieBindingSource
             // 
@@ -376,6 +273,8 @@
             this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage2.BackgroundImage")));
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage2.Controls.Add(this.comboBox3);
+            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.label23);
@@ -411,23 +310,53 @@
             this.tabPage2.Text = "Pretraga";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.comboBox3.Location = new System.Drawing.Point(461, 489);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(42, 21);
+            this.comboBox3.TabIndex = 32;
+            this.comboBox3.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label8.Location = new System.Drawing.Point(353, 489);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 21);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "Moja ocjena:";
+            this.label8.Visible = false;
+            // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.White;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox2.Location = new System.Drawing.Point(425, 464);
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.textBox2.Location = new System.Drawing.Point(460, 424);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(314, 43);
+            this.textBox2.Size = new System.Drawing.Size(302, 50);
             this.textBox2.TabIndex = 30;
             this.textBox2.Visible = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(31, 80);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(191, 139);
@@ -442,7 +371,7 @@
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label23.Location = new System.Drawing.Point(352, 350);
+            this.label23.Location = new System.Drawing.Point(349, 310);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(65, 21);
             this.label23.TabIndex = 28;
@@ -457,7 +386,7 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label22.Location = new System.Drawing.Point(352, 425);
+            this.label22.Location = new System.Drawing.Point(349, 385);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(102, 21);
             this.label22.TabIndex = 27;
@@ -472,7 +401,7 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label21.Location = new System.Drawing.Point(352, 386);
+            this.label21.Location = new System.Drawing.Point(349, 346);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 21);
             this.label21.TabIndex = 26;
@@ -487,7 +416,7 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label20.Location = new System.Drawing.Point(352, 464);
+            this.label20.Location = new System.Drawing.Point(349, 424);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 21);
             this.label20.TabIndex = 25;
@@ -502,7 +431,7 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label19.Location = new System.Drawing.Point(352, 316);
+            this.label19.Location = new System.Drawing.Point(349, 276);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(65, 21);
             this.label19.TabIndex = 24;
@@ -517,7 +446,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label18.Location = new System.Drawing.Point(352, 281);
+            this.label18.Location = new System.Drawing.Point(349, 241);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(73, 21);
             this.label18.TabIndex = 23;
@@ -532,7 +461,7 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label17.Location = new System.Drawing.Point(352, 249);
+            this.label17.Location = new System.Drawing.Point(349, 209);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(47, 21);
             this.label17.TabIndex = 22;
@@ -547,7 +476,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label16.Location = new System.Drawing.Point(352, 218);
+            this.label16.Location = new System.Drawing.Point(349, 178);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(72, 21);
             this.label16.TabIndex = 21;
@@ -562,7 +491,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.Location = new System.Drawing.Point(352, 186);
+            this.label15.Location = new System.Drawing.Point(349, 146);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(69, 21);
             this.label15.TabIndex = 20;
@@ -577,7 +506,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label14.Location = new System.Drawing.Point(352, 155);
+            this.label14.Location = new System.Drawing.Point(349, 115);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(66, 21);
             this.label14.TabIndex = 19;
@@ -592,7 +521,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(352, 120);
+            this.label13.Location = new System.Drawing.Point(349, 80);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(102, 21);
             this.label13.TabIndex = 18;
@@ -607,11 +536,10 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(459, 350);
+            this.label11.Location = new System.Drawing.Point(456, 310);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 21);
             this.label11.TabIndex = 16;
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 
@@ -621,11 +549,10 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(459, 425);
+            this.label10.Location = new System.Drawing.Point(456, 385);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(0, 21);
             this.label10.TabIndex = 15;
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
             // 
@@ -635,11 +562,10 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(459, 386);
+            this.label9.Location = new System.Drawing.Point(456, 346);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(0, 21);
             this.label9.TabIndex = 14;
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label7
             // 
@@ -649,11 +575,10 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(459, 316);
+            this.label7.Location = new System.Drawing.Point(456, 276);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(0, 21);
             this.label7.TabIndex = 12;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -663,11 +588,10 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(459, 281);
+            this.label6.Location = new System.Drawing.Point(456, 241);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 21);
             this.label6.TabIndex = 11;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -677,11 +601,10 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(459, 249);
+            this.label5.Location = new System.Drawing.Point(456, 209);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 21);
             this.label5.TabIndex = 10;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -691,11 +614,10 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(459, 218);
+            this.label4.Location = new System.Drawing.Point(456, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 21);
             this.label4.TabIndex = 9;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -705,7 +627,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(459, 186);
+            this.label3.Location = new System.Drawing.Point(456, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 21);
             this.label3.TabIndex = 8;
@@ -718,11 +640,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(459, 155);
+            this.label2.Location = new System.Drawing.Point(456, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 21);
             this.label2.TabIndex = 7;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -732,11 +653,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(460, 120);
+            this.label1.Location = new System.Drawing.Point(457, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 21);
             this.label1.TabIndex = 6;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button2
             // 
@@ -752,7 +672,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(962, 394);
+            this.dataGridView1.Location = new System.Drawing.Point(1095, 570);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(10, 10);
             this.dataGridView1.TabIndex = 3;
@@ -794,6 +714,122 @@
             // 
             this.imdb_movie_godinaTableAdapter.ClearBeforeFill = true;
             // 
+            // Poster
+            // 
+            this.Poster.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Poster.FillWeight = 50F;
+            this.Poster.HeaderText = "Poster";
+            this.Poster.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Poster.Name = "Poster";
+            this.Poster.Width = 43;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.Width = 52;
+            // 
+            // yearDataGridViewTextBoxColumn
+            // 
+            this.yearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
+            this.yearDataGridViewTextBoxColumn.HeaderText = "Year";
+            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
+            this.yearDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // releasedDataGridViewTextBoxColumn
+            // 
+            this.releasedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.releasedDataGridViewTextBoxColumn.DataPropertyName = "Released";
+            this.releasedDataGridViewTextBoxColumn.HeaderText = "Released";
+            this.releasedDataGridViewTextBoxColumn.Name = "releasedDataGridViewTextBoxColumn";
+            this.releasedDataGridViewTextBoxColumn.Width = 77;
+            // 
+            // runtimeDataGridViewTextBoxColumn
+            // 
+            this.runtimeDataGridViewTextBoxColumn.DataPropertyName = "Runtime";
+            this.runtimeDataGridViewTextBoxColumn.HeaderText = "Runtime";
+            this.runtimeDataGridViewTextBoxColumn.Name = "runtimeDataGridViewTextBoxColumn";
+            this.runtimeDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // genreDataGridViewTextBoxColumn
+            // 
+            this.genreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
+            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
+            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
+            this.genreDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // directorDataGridViewTextBoxColumn
+            // 
+            this.directorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.directorDataGridViewTextBoxColumn.DataPropertyName = "Director";
+            this.directorDataGridViewTextBoxColumn.HeaderText = "Director";
+            this.directorDataGridViewTextBoxColumn.Name = "directorDataGridViewTextBoxColumn";
+            this.directorDataGridViewTextBoxColumn.Width = 69;
+            // 
+            // actorsDataGridViewTextBoxColumn
+            // 
+            this.actorsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.actorsDataGridViewTextBoxColumn.DataPropertyName = "Actors";
+            this.actorsDataGridViewTextBoxColumn.HeaderText = "Actors";
+            this.actorsDataGridViewTextBoxColumn.Name = "actorsDataGridViewTextBoxColumn";
+            // 
+            // plotDataGridViewTextBoxColumn
+            // 
+            this.plotDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.plotDataGridViewTextBoxColumn.DataPropertyName = "Plot";
+            this.plotDataGridViewTextBoxColumn.HeaderText = "Plot";
+            this.plotDataGridViewTextBoxColumn.Name = "plotDataGridViewTextBoxColumn";
+            // 
+            // awardsDataGridViewTextBoxColumn
+            // 
+            this.awardsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.awardsDataGridViewTextBoxColumn.DataPropertyName = "Awards";
+            this.awardsDataGridViewTextBoxColumn.HeaderText = "Awards";
+            this.awardsDataGridViewTextBoxColumn.Name = "awardsDataGridViewTextBoxColumn";
+            // 
+            // imdbRatingDataGridViewTextBoxColumn
+            // 
+            this.imdbRatingDataGridViewTextBoxColumn.DataPropertyName = "ImdbRating";
+            this.imdbRatingDataGridViewTextBoxColumn.HeaderText = "ImdbRating";
+            this.imdbRatingDataGridViewTextBoxColumn.Name = "imdbRatingDataGridViewTextBoxColumn";
+            this.imdbRatingDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // boxOfficeDataGridViewTextBoxColumn
+            // 
+            this.boxOfficeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.boxOfficeDataGridViewTextBoxColumn.DataPropertyName = "BoxOffice";
+            this.boxOfficeDataGridViewTextBoxColumn.HeaderText = "BoxOffice";
+            this.boxOfficeDataGridViewTextBoxColumn.Name = "boxOfficeDataGridViewTextBoxColumn";
+            this.boxOfficeDataGridViewTextBoxColumn.Width = 78;
+            // 
+            // PosterUrl
+            // 
+            this.PosterUrl.DataPropertyName = "Poster";
+            this.PosterUrl.HeaderText = "Poster Url";
+            this.PosterUrl.Name = "PosterUrl";
+            this.PosterUrl.Visible = false;
+            this.PosterUrl.Width = 21;
+            // 
+            // BoxOffice1
+            // 
+            this.BoxOffice1.DataPropertyName = "BoxOffice1";
+            this.BoxOffice1.HeaderText = "BoxOffice1";
+            this.BoxOffice1.Name = "BoxOffice1";
+            this.BoxOffice1.ReadOnly = true;
+            this.BoxOffice1.Visible = false;
+            // 
+            // Ocijena
+            // 
+            this.Ocijena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Ocijena.DataPropertyName = "Ocijena";
+            this.Ocijena.HeaderText = "Ocijena";
+            this.Ocijena.Name = "Ocijena";
+            this.Ocijena.Width = 50;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -803,7 +839,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Program za evidenciju i ocjenjivanje filmova";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -869,6 +905,9 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.DataGridViewImageColumn Poster;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
@@ -883,5 +922,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn boxOfficeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PosterUrl;
         private System.Windows.Forms.DataGridViewTextBoxColumn BoxOffice1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ocijena;
     }
 }

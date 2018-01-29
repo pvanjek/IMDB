@@ -12,12 +12,15 @@ using System.Configuration;
 using System.Data.Common;
 using System.Net;
 using System.IO;
+using System.Diagnostics;
 
 namespace RESTapi
 {
     public partial class Form1 : Form
     {
         StringBuilder builder;
+
+        public string obrisi_naziv;
 
         public static Image GetImageFromUrl(string url)
         {
@@ -37,6 +40,12 @@ namespace RESTapi
         {
             InitializeComponent();
             dataGridView2.Columns["Poster"].DefaultCellStyle.NullValue = null;
+            DataGridViewImageColumn oDeleteButton = new DataGridViewImageColumn();
+            oDeleteButton.Image = Image.FromFile("C:/Delete.png");
+            oDeleteButton.Name = "Obrisi";
+            oDeleteButton.Width = 100;
+            oDeleteButton.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView2.Columns.Add(oDeleteButton);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -48,11 +57,8 @@ namespace RESTapi
             dataGridView2.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            
-     
             string endpoint = "http://www.omdbapi.com/";
             string apikey = "7576c256";
             builder = new StringBuilder();
@@ -73,6 +79,8 @@ namespace RESTapi
             label22.Show();
             label23.Show();
             button2.Show();
+            comboBox3.Show();
+            label8.Show();
             label1.Text = dataGridView1[0, 0].Value.ToString();
             label2.Text = dataGridView1[1, 0].Value.ToString();
             label3.Text = dataGridView1[2, 0].Value.ToString();
@@ -94,7 +102,7 @@ namespace RESTapi
                 textBox1.Focus();
                 textBox1.Text = "";
             }
-
+            comboBox3.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -104,35 +112,41 @@ namespace RESTapi
 
             using (DbCommand oCommand = oConnection.CreateCommand())
              {
-                //  string tekst1 = "INSERT INTO imdb_movies ( Title, Year, Released, Runtime, Genre, Director, Actors, Plot, Awards, ImdbRating, BoxOffice) VALUES ('" + dataGridView1[0, 0].Value.ToString() + "', '" + dataGridView1[1, 0].Value.ToString() + "', '" + dataGridView1[2, 0].Value.ToString() + "', '" + dataGridView1[3, 0].Value.ToString() + "', '" + dataGridView1[4, 0].Value.ToString() + "', '" + dataGridView1[5, 0].Value.ToString() + "', '" + dataGridView1[6, 0].Value.ToString() + "', '" + dataGridView1[7, 0].Value.ToString() + "', '" + dataGridView1[8, 0].Value.ToString() + "', '" + dataGridView1[9, 0].Value.ToString() + "', '" + dataGridView1[10, 0].Value.ToString() +  "') ";
-                //string tekst1 = "INSERT INTO imdb_movies ( Id_filma,  Title, Year, Released, Runtime, Genre, Director, Actors, Plot, Awards, ImdbRating, BoxOffice) VALUES ('" + 1 + "', '" + dataGridView1[0, 0].Value.ToString() + "', '" + dataGridView1[1, 0].Value.ToString() + "', '" + dataGridView1[2, 0].Value.ToString() + "', '" + dataGridView1[3, 0].Value.ToString() + "', '" + dataGridView1[4, 0].Value.ToString() + "', '" + dataGridView1[5, 0].Value.ToString() + "', '" + dataGridView1[6, 0].Value.ToString() + "', '" + dataGridView1[7, 0].Value.ToString() + "', '" + dataGridView1[8, 0].Value.ToString() + "', '" + dataGridView1[9, 0].Value.ToString() + "', '" + dataGridView1[10, 0].Value.ToString() + "');";
-                // string tekst1 = "INSERT INTO imdb_movie (   Title, Year, Released , Runtime , Genre , Director,  Actors , Plot , Awards , ImdbRating, BoxOffice) VALUES ('"  + dataGridView1[0, 0].Value.ToString().Replace(":", " ") + "', '" + dataGridView1[1, 0].Value.ToString() + "', '" + dataGridView1[2, 0].Value.ToString() + "', '" + dataGridView1[3, 0].Value.ToString() + "', '" + dataGridView1[4, 0].Value.ToString() + "', '" + dataGridView1[5, 0].Value.ToString() + "', '" + dataGridView1[6, 0].Value.ToString() + "', '" + dataGridView1[7, 0].Value.ToString() + "', '" + dataGridView1[8, 0].Value.ToString() + "', '" + dataGridView1[9, 0].Value.ToString() + "', '" + dataGridView1[10, 0].Value.ToString() +  "');";
-                bool nasao = false;
+                bool nasao = true;
                 for (int i = 0; i < dataGridView2.RowCount -1 ; i++)
                 {
                     if (dataGridView2[1, i].Value.ToString() == dataGridView1[0, 0].Value.ToString())
                     {
                         MessageBox.Show("Film : " + dataGridView1[0, 0].Value.ToString() + " je već dodan u bazu");
-                        nasao = true;
+                        nasao = false;
                         i = dataGridView2.RowCount;
                     }
                 }
 
-                if (nasao == false)
+                if (comboBox3.Text.ToString() == "")
                 {
-                    //string tekst1 = "INSERT INTO imdb_movie (   Title, Year, Released , Runtime , Genre , Director,  Actors , Plot , Awards , ImdbRating, BoxOffice) VALUES ('" + dataGridView1[0, 0].Value.ToString() + "', '" + dataGridView1[1, 0].Value.ToString() + "', '" + dataGridView1[2, 0].Value.ToString() + "', '" + dataGridView1[3, 0].Value.ToString() + "', '" + dataGridView1[4, 0].Value.ToString() + "', '" + dataGridView1[5, 0].Value.ToString() + "', '" + dataGridView1[6, 0].Value.ToString() + "', '" + dataGridView1[7, 0].Value.ToString() + "', '" + dataGridView1[8, 0].Value.ToString() + "', '" + dataGridView1[9, 0].Value.ToString() + "', '" + dataGridView1[10, 0].Value.ToString() + "');";
-
-                    string tekst1 = "INSERT INTO imdb_movie (   Title, Year, Released , Runtime , Genre , Director,  Actors , Plot , Awards , ImdbRating, BoxOffice, Poster) VALUES ('" + dataGridView1[0, 0].Value.ToString() + "', '" + dataGridView1[1, 0].Value.ToString() + "', '" + dataGridView1[2, 0].Value.ToString() + "', '" + dataGridView1[3, 0].Value.ToString() + "', '" + dataGridView1[4, 0].Value.ToString() + "', '" + dataGridView1[5, 0].Value.ToString() + "', '" + dataGridView1[6, 0].Value.ToString() + "', '" + dataGridView1[7, 0].Value.ToString() + "', '" + dataGridView1[8, 0].Value.ToString() + "', '" + dataGridView1[9, 0].Value.ToString() + "', '" + dataGridView1[10, 0].Value.ToString() + "', '" + dataGridView1[11, 0].Value.ToString() + "');";
+                    MessageBox.Show("Unesi ocjenu filma");
+                    nasao = false;
+                    comboBox3.Focus();
+                }
+                if (nasao == true)
+                {
+                    string tekst1 = "INSERT INTO imdb_movie (   Title, Year, Released , Runtime , Genre , Director,  Actors , Plot , Awards , ImdbRating, BoxOffice, Poster, Ocijena) VALUES ('" + dataGridView1[0, 0].Value.ToString() + "', '" + dataGridView1[1, 0].Value.ToString() + "', '" + dataGridView1[2, 0].Value.ToString() + "', '" + dataGridView1[3, 0].Value.ToString() + "', '" + dataGridView1[4, 0].Value.ToString() + "', '" + dataGridView1[5, 0].Value.ToString() + "', '" + dataGridView1[6, 0].Value.ToString() + "', '" + dataGridView1[7, 0].Value.ToString() + "', '" + dataGridView1[8, 0].Value.ToString() + "', '" + dataGridView1[9, 0].Value.ToString() + "', '" + dataGridView1[10, 0].Value.ToString() + "', '" + dataGridView1[11, 0].Value.ToString() + "', '" + comboBox3.Text.ToString() + "');";
                     oCommand.CommandText = tekst1; 
                 oConnection.Open();
                 using (DbDataReader oReader = oCommand.ExecuteReader())
                {
             //nema povratne vrijednosti
               }
+                    this.imdb_movieTableAdapter.Fill(this.dotNetDataSet.imdb_movie);
+            this.imdb_movie_godinaTableAdapter.Fill(this.dotNetDataSet.imdb_movie_godina);
+            MessageBox.Show("Film: " + label1.Text.ToString() + " je dodan u bazu");
+            textBox1.Text = "";
+            textBox1.Focus();
                     }
             }
-            this.imdb_movieTableAdapter.Fill(this.dotNetDataSet.imdb_movie);
-            }
+          
+        }
 
         private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -141,7 +155,6 @@ namespace RESTapi
                 int redak = e.RowIndex;
                 if (redak < (dataGridView2.RowCount - 1))
                 { 
-               // MessageBox.Show(e.RowIndex.ToString());
                 string url_poster = dataGridView2[12, redak].Value.ToString();
                 e.Value = GetImageFromUrl(url_poster.ToString());
                 }
@@ -150,11 +163,7 @@ namespace RESTapi
                     e.Value = null;
                 }
             }
-            //   label12.Text = dataGridView2[e.ColumnIndex + 1, e.RowIndex].Value.ToString();
-            //  e.Value = GetImageFromUrl(dataGridView2[12, e.RowIndex].Value.ToString());
-        }
-
-       
+        }  
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -162,7 +171,15 @@ namespace RESTapi
             bs.DataSource = dataGridView2.DataSource;
             //  bs.Filter = dataGridView1.Columns[2].HeaderText.ToString() + " LIKE '%" + comboBox1.Text.ToString() + "%'";
             bs.Filter = "";
-            dataGridView1.DataSource = bs;
+            dataGridView2.DataSource = bs;
+            this.imdb_movieTableAdapter.Fill(this.dotNetDataSet.imdb_movie);
+
+            BindingSource bs1 = new BindingSource();
+            bs1.DataSource = comboBox1.DataSource;
+            comboBox1.DataSource = bs1;
+            this.imdb_movieTableAdapter.Fill(this.dotNetDataSet.imdb_movie);
+            this.imdb_movie_godinaTableAdapter.Fill(this.dotNetDataSet.imdb_movie_godina);
+
         }
 
         private void comboBox2_TextChanged(object sender, EventArgs e)
@@ -215,6 +232,9 @@ namespace RESTapi
                 case "BoxOffice":
                     Kolona = 13;
                     break;
+                case "Ocijena":
+                    Kolona = 14;
+                    break;
                 default:
                     break;
             }
@@ -233,75 +253,41 @@ namespace RESTapi
         {
             BindingSource bs = new BindingSource();
             bs.DataSource = dataGridView2.DataSource;
-            //  bs.Filter = dataGridView1.Columns[2].HeaderText.ToString() + " LIKE '%" + comboBox1.Text.ToString() + "%'";
             bs.Filter = "Year" + " LIKE '%" + comboBox1.Text.ToString() + "%'";
             dataGridView1.DataSource = bs;
         }
-
-
+        
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView2.Rows[e.RowIndex].Selected = true;
+                if (dataGridView2.CurrentCell.ColumnIndex.Equals(15) && e.RowIndex != -1) // ako mi je moja trenuta celija ( index =5--broj kolone ) i ako index retka nije -1(mora biti index) nesto napravi
+            {
+                obrisi_naziv = dataGridView2[1, e.RowIndex].Value.ToString();
+                IMDB.Delete_movie Obrisi = new IMDB.Delete_movie(obrisi_naziv);
+                Obrisi.Show();
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dataGridView2.DataSource;
+                dataGridView2.DataSource = bs;
+                BindingSource bs1 = new BindingSource();
+                bs1.DataSource = comboBox1.DataSource;
+                comboBox1.DataSource = bs1;
+                this.imdb_movieTableAdapter.Fill(this.dotNetDataSet.imdb_movie);
+                this.imdb_movie_godinaTableAdapter.Fill(this.dotNetDataSet.imdb_movie_godina);
+            }
+    }
         private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
         {
 
         }
     }
 
-            /* 
-        funkciju search movies unutar klase 
-        pozvati funkciju getMovies koja ima za parametar url
-        rezultat funkcije prikazati ispod textboxa i gumbica
-        uz prikazane rezultate spremiti film u bazu (dodati gumbic spremi)
-        kreirati servis Crud koji ima metodu save movie
-        savemovie sprema film iz pretrage u bazu
-        */
+    /* 
+funkciju search movies unutar klase 
+pozvati funkciju getMovies koja ima za parametar url
+rezultat funkcije prikazati ispod textboxa i gumbica
+uz prikazane rezultate spremiti film u bazu (dodati gumbic spremi)
+kreirati servis Crud koji ima metodu save movie
+savemovie sprema film iz pretrage u bazu
+*/
 }
 

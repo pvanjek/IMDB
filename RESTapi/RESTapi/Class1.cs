@@ -29,7 +29,6 @@ namespace RESTapi
              List<Movie> lRestMovies = new List<Movie>();
             //string sUrl1 = System.Configuration.ConfigurationManager.AppSettings["RestApiUrl"];
             string sJson = CallRestMethod(sUrl); // iz URL-a spremamo podatke (Url)
-           // MessageBox.Show(sJson);
             if (sJson.Substring(2,8) != "Response")
             {
                JObject oJson = JObject.Parse(sJson);
@@ -45,6 +44,7 @@ namespace RESTapi
             string sImdbRating1 = oJson["imdbRating"].ToString();
             string sBoxOffice1 = oJson["BoxOffice"].ToString();
             string sSlika1 = oJson["Poster"].ToString();
+            
                 lRestMovies.Add(new Movie
                    {
                         sTitle = sTitle1,
@@ -80,28 +80,17 @@ namespace RESTapi
                     sSlika = "0",
                 });
             }
-
-           
-
             //}
             List<Movie> lRestMovies1 = lRestMovies;
-            
             return lRestMovies;
-            
         }
 
         public static string SearchMovies(string url1)
         {
              
             List<Movie> lRestMovies1 = GetMovies(url1);
-           
-
-
             return url1;
         }
-       
-
-
         public static string CallRestMethod(string url)
         {
            
@@ -124,21 +113,24 @@ namespace RESTapi
         {
 
             MessageBox.Show(lRestMovies1[0].sTitle.ToString());
+        }
+        public static string DeleteMovie(string Title)
+        {
+            string sSqlConnectionString = "Data Source=193.198.57.183; Initial Catalog = DotNet; User ID = vjezbe; Password = vjezbe";
+            using (DbConnection oConnection = new SqlConnection(sSqlConnectionString))
 
+            using (DbCommand oCommand = oConnection.CreateCommand())
 
-
-        //    string sSqlConnectionString = "Data Source=193.198.57.183; Initial Catalog = DotNet; User ID = vjezbe; Password = vjezbe";
-            //using (DbConnection oConnection = new SqlConnection(sSqlConnectionString))
-
-            //using (DbCommand oCommand = oConnection.CreateCommand())
-           // {
-                // oCommand.CommandText = "INSERT INTO imdb_movies (Id_filma, Title, Year, Released, Runtime, Genre, Director, Actors, Plot, Awards, ImdbRating, BoxOffice) VALUES ('" + List["Title"] + "', '" + oUser.sUserPassword + "', '" + oUser.sUserFirstName + "', '" + oUser.sUserLastName + "');";
-            //    oConnection.Open();
-            //    using (DbDataReader oReader = oCommand.ExecuteReader())
-             //   {
+            {
+                Debug.WriteLine("DELETE FROM imdb_movie WHERE Title = '" + Title + "'");
+                oCommand.CommandText = "DELETE FROM imdb_movie WHERE Title = '" + Title + "'";
+                oConnection.Open();
+                using (DbDataReader oReader = oCommand.ExecuteReader())
+                {
                     //nema povratne vrijednosti
-              //  }
-         //   }
+                }
+                return "obrisi";
+            }
         }
     }
 }

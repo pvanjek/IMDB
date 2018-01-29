@@ -340,6 +340,8 @@ namespace IMDB {
             
             private global::System.Data.DataColumn columnBoxOffice1;
             
+            private global::System.Data.DataColumn columnOcijena;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public imdb_movieDataTable() {
@@ -479,6 +481,14 @@ namespace IMDB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OcijenaColumn {
+                get {
+                    return this.columnOcijena;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -514,7 +524,7 @@ namespace IMDB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public imdb_movieRow Addimdb_movieRow(string Title, string Year, string Released, string Runtime, string Genre, string Director, string Actors, string Plot, string Awards, decimal ImdbRating, string BoxOffice, string Poster, decimal BoxOffice1) {
+            public imdb_movieRow Addimdb_movieRow(string Title, string Year, string Released, string Runtime, string Genre, string Director, string Actors, string Plot, string Awards, decimal ImdbRating, string BoxOffice, string Poster, decimal BoxOffice1, int Ocijena) {
                 imdb_movieRow rowimdb_movieRow = ((imdb_movieRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Title,
@@ -529,7 +539,8 @@ namespace IMDB {
                         ImdbRating,
                         BoxOffice,
                         Poster,
-                        BoxOffice1};
+                        BoxOffice1,
+                        Ocijena};
                 rowimdb_movieRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowimdb_movieRow);
                 return rowimdb_movieRow;
@@ -565,6 +576,7 @@ namespace IMDB {
                 this.columnBoxOffice = base.Columns["BoxOffice"];
                 this.columnPoster = base.Columns["Poster"];
                 this.columnBoxOffice1 = base.Columns["BoxOffice1"];
+                this.columnOcijena = base.Columns["Ocijena"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -596,6 +608,8 @@ namespace IMDB {
                 base.Columns.Add(this.columnPoster);
                 this.columnBoxOffice1 = new global::System.Data.DataColumn("BoxOffice1", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBoxOffice1);
+                this.columnOcijena = new global::System.Data.DataColumn("Ocijena", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOcijena);
                 this.columnTitle.AllowDBNull = false;
                 this.columnTitle.MaxLength = 200;
                 this.columnYear.MaxLength = 4;
@@ -1202,6 +1216,22 @@ namespace IMDB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Ocijena {
+                get {
+                    try {
+                        return ((int)(this[this.tableimdb_movie.OcijenaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Ocijena\' in table \'imdb_movie\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableimdb_movie.OcijenaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsYearNull() {
                 return this.IsNull(this.tableimdb_movie.YearColumn);
             }
@@ -1342,6 +1372,18 @@ namespace IMDB {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetBoxOffice1Null() {
                 this[this.tableimdb_movie.BoxOffice1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOcijenaNull() {
+                return this.IsNull(this.tableimdb_movie.OcijenaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOcijenaNull() {
+                this[this.tableimdb_movie.OcijenaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1594,10 +1636,11 @@ namespace IMDB.DotNetDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("BoxOffice", "BoxOffice");
             tableMapping.ColumnMappings.Add("Poster", "Poster");
             tableMapping.ColumnMappings.Add("BoxOffice1", "BoxOffice1");
+            tableMapping.ColumnMappings.Add("Ocijena", "Ocijena");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [imdb_movie] ([Title], [Year], [Released], [Runtime], [Genre], [Director], [Actors], [Plot], [Awards], [ImdbRating], [BoxOffice], [Poster]) VALUES (@Title, @Year, @Released, @Runtime, @Genre, @Director, @Actors, @Plot, @Awards, @ImdbRating, @BoxOffice, @Poster)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [imdb_movie] ([Title], [Year], [Released], [Runtime], [Genre], [Director], [Actors], [Plot], [Awards], [ImdbRating], [BoxOffice], [Poster], [Ocijena]) VALUES (@Title, @Year, @Released, @Runtime, @Genre, @Director, @Actors, @Plot, @Awards, @ImdbRating, @BoxOffice, @Poster, @Ocijena)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Year", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1611,6 +1654,7 @@ namespace IMDB.DotNetDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImdbRating", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 2, 1, "ImdbRating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BoxOffice", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoxOffice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Poster", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Poster", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ocijena", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ocijena", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1626,10 +1670,8 @@ namespace IMDB.DotNetDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Title, Year, Released, Runtime, Genre, Director, Actors, Plot, Awar" +
-                "ds, ImdbRating, BoxOffice, Poster, CAST(REPLACE(REPLACE(REPLACE(BoxOffice, \'N/A\'" +
-                ", \'0\'), \'$\', \'\'), \',\', \'\') AS DECIMAL(14, 0)) AS BoxOffice1\r\nFROM            imd" +
-                "b_movie";
+            this._commandCollection[0].CommandText = @"SELECT        Title, Year, Released, Runtime, Genre, Director, Actors, Plot, Awards, ImdbRating, BoxOffice, Poster, CAST(REPLACE(REPLACE(REPLACE(BoxOffice, 'N/A', '0'), '$', ''), ',', '') AS DECIMAL(14, 0)) AS BoxOffice1, Ocijena
+FROM            imdb_movie";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1690,7 +1732,7 @@ namespace IMDB.DotNetDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Title, string Year, string Released, string Runtime, string Genre, string Director, string Actors, string Plot, string Awards, global::System.Nullable<decimal> ImdbRating, string BoxOffice, string Poster) {
+        public virtual int Insert(string Title, string Year, string Released, string Runtime, string Genre, string Director, string Actors, string Plot, string Awards, global::System.Nullable<decimal> ImdbRating, string BoxOffice, string Poster, global::System.Nullable<int> Ocijena) {
             if ((Title == null)) {
                 throw new global::System.ArgumentNullException("Title");
             }
@@ -1762,6 +1804,12 @@ namespace IMDB.DotNetDataSetTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Poster));
+            }
+            if ((Ocijena.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(Ocijena.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1918,7 +1966,7 @@ namespace IMDB.DotNetDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Year\r\nFROM            imdb_movie";
+            this._commandCollection[0].CommandText = "SELECT DISTINCT Year\r\nFROM            imdb_movie\r\nORDER BY Year";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
